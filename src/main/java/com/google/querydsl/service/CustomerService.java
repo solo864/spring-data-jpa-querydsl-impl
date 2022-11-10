@@ -35,7 +35,7 @@ public class CustomerService {
                 .add(filterParams.surname(), QCustomer.customer.surname::eq)
                 .add(filterParams.email(), QCustomer.customer.email::eq)
                 .buildOr();
-        return customerRepository.findAllQueryDsl(predicate, filterParams)
+        return customerRepository.findAllQueryDsl(predicate)
                 .stream().map(customerReadMapper::mapFrom)
                 .toList();
     }

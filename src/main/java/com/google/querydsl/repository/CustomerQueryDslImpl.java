@@ -15,7 +15,7 @@ public class CustomerQueryDslImpl implements CustomerQueryDsl {
     private final EntityManager em;
 
     @Override
-    public List<Customer> findAllQueryDsl(Predicate predicate, FilterParams filterParams) {
+    public List<Customer> findAllQueryDsl(Predicate predicate) {
         return new JPAQuery<>(em)
                 .select(QCustomer.customer)
                 .from(QCustomer.customer)

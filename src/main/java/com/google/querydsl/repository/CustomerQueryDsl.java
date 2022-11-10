@@ -6,5 +6,5 @@ import com.querydsl.core.types.Predicate;
 import java.util.List;
 
 public interface CustomerQueryDsl {
-    List<Customer> findAllQueryDsl(Predicate predicate, FilterParams filterParams);
+    List<Customer> findAllQueryDsl(Predicate predicate);
 }
