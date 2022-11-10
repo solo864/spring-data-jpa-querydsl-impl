@@ -27,6 +27,7 @@ import lombok.ToString;
 @ToString(exclude = "orders")
 @Entity
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -39,5 +40,4 @@ public class Customer {
     private Role role;
     @OneToMany
     private List<Order> orders;
-
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CustomerReadMapper implements Mapper<Customer, CustomerReadDto> {
+
     @Override
     public CustomerReadDto mapFrom(Customer object) {
         return CustomerReadDto.builder()
