@@ -17,7 +17,6 @@ public class CustomerCriteriaAPIImpl implements CustomerCriteriaAPI {
 
     private final EntityManager entityManager;
 
-
     @Override
     public List<Customer> findAllCriteriaAPI(Predicate predicate, FilterParams params) {
         List<Predicate> predicates = new ArrayList<>();
