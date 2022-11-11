@@ -31,4 +31,6 @@ public class QPredicate {
     public Predicate buildOr() {
         return ExpressionUtils.anyOf(predicates);
     }
+
+
 }

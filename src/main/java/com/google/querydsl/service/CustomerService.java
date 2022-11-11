@@ -20,8 +20,6 @@ public class CustomerService {
     public List<CustomerReadDto> getAll(FilterParams filterParams) {
         Predicate predicate = QPredicate.builder()
                 .add(filterParams.firstName(), QCustomer.customer.firstName::eq)
-                .add(filterParams.surname(), QCustomer.customer.surname::eq)
-                .add(filterParams.email(), QCustomer.customer.email::eq)
                 .buildOr();
 
         return customerRepository.findAll(predicate)
@@ -32,10 +30,14 @@ public class CustomerService {
     public List<CustomerReadDto> getAllQueryDsl(FilterParams filterParams) {
         Predicate predicate = QPredicate.builder()
                 .add(filterParams.firstName(), QCustomer.customer.firstName::eq)
-                .add(filterParams.surname(), QCustomer.customer.surname::eq)
-                .add(filterParams.email(), QCustomer.customer.email::eq)
                 .buildOr();
-        return customerRepository.findAllQueryDsl(predicate)
+        return customerRepository.getAllQueryDsl(predicate)
+                .stream().map(customerReadMapper::mapFrom)
+                .toList();
+    }
+
+    public List<CustomerReadDto> getAllCriteriaApi(javax.persistence.criteria.Predicate predicate, FilterParams filterParams) {
+        return customerRepository.findAllCriteriaAPI(predicate, filterParams)
                 .stream().map(customerReadMapper::mapFrom)
                 .toList();
     }
