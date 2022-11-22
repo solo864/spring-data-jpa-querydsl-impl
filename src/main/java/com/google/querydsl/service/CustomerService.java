@@ -4,7 +4,7 @@ import com.google.querydsl.entity.QCustomer;
 import com.google.querydsl.mapper.CustomerReadMapper;
 import com.google.querydsl.model.CustomerReadDto;
 import com.google.querydsl.repository.CustomerRepository;
-import com.google.querydsl.repository.QPredicate;
+import com.google.querydsl.repository.QPredicates;
 import com.querydsl.core.types.Predicate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public class CustomerService {
     private final CustomerReadMapper customerReadMapper;
 
     public List<CustomerReadDto> getAll(FilterParams filterParams) {
-        Predicate predicate = QPredicate.builder()
+        Predicate predicate = QPredicates.builder()
                 .add(filterParams.firstName(), QCustomer.customer.firstName::eq)
                 .add(filterParams.surname(), QCustomer.customer.surname::eq)
                 .add(filterParams.email(), QCustomer.customer.email::eq)
@@ -30,7 +30,7 @@ public class CustomerService {
     }
 
     public List<CustomerReadDto> getAllQueryDsl(FilterParams filterParams) {
-        Predicate predicate = QPredicate.builder()
+        Predicate predicate = QPredicates.builder()
                 .add(filterParams.firstName(), QCustomer.customer.firstName::eq)
                 .add(filterParams.surname(), QCustomer.customer.surname::eq)
                 .add(filterParams.email(), QCustomer.customer.email::eq)
