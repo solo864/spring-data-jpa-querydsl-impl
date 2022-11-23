@@ -8,7 +8,7 @@ import com.google.querydsl.mapper.CustomerReadMapper;
 import com.google.querydsl.model.CustomerReadDto;
 import com.google.querydsl.model.Role;
 import com.google.querydsl.repository.CustomerRepository;
-import com.google.querydsl.repository.QPredicate;
+import com.google.querydsl.repository.QPredicates;
 import com.google.querydsl.service.CustomerService;
 import com.google.querydsl.service.FilterParams;
 import com.querydsl.core.types.Predicate;
@@ -35,7 +35,7 @@ public class CustomerServiceTest {
     @Test
     void queryDsl1stWay() {
         FilterParams params = FilterParams.builder().build();
-        Predicate predicate = QPredicate.builder().add(params.firstName(), QCustomer.customer.firstName::eq)
+        Predicate predicate = QPredicates.builder().add(params.firstName(), QCustomer.customer.firstName::eq)
                 .add(params.surname(), QCustomer.customer.surname::eq)
                 .add(params.email(), QCustomer.customer.email::eq)
                 .build();
@@ -56,7 +56,7 @@ public class CustomerServiceTest {
     @Test
     void queryDsl2ndWay() {
         FilterParams params = FilterParams.builder().build();
-        Predicate predicate = QPredicate.builder().add(params.firstName(), QCustomer.customer.firstName::eq)
+        Predicate predicate = QPredicates.builder().add(params.firstName(), QCustomer.customer.firstName::eq)
                 .add(params.surname(), QCustomer.customer.surname::eq)
                 .add(params.email(), QCustomer.customer.email::eq)
                 .build();
